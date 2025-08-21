@@ -123,7 +123,7 @@ function Profile() {
           </div>
         </div>
 
-        <button className="btn btn-primary w-full mt-4" type="submit" disabled={loading}>
+        <button className={`btn btn-primary w-full mt-4 ${loading ? "cursor-not-allowed bg-gray-500": ""}`} type="submit">
           {loading ? "Updating..." : "Update Profile"}
         </button>
       </form>

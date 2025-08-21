@@ -12,11 +12,18 @@ import { onTicketCreated } from './inngest/functions/on-ticket-create.js';
 
 const PORT=process.env.PORT || 8000;
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: process.env.FRONTEND_URL,
+    credentials: true,
+}));
 app.use(express.json());
 
 app.use("/api/auth", userRoutes);
 app.use("/api/tickets", ticketRoutes);
+
+app.get('/test', (req, res) => {
+    res.send("Test endpoint");
+});
 
 app.use(
     "/api/inngest",
